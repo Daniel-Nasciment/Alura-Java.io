@@ -11,6 +11,10 @@ public class TesteCopiarArquivo {
 
 	public static void main(String[] args) throws IOException {
 
+		
+		// STRAMS -> São dados binários(Imagens, etc...)
+		// READER/WRITER -> São caracteres
+		
 
 		// LEITURA
 		FileInputStream fis = new FileInputStream("lorem.txt");
