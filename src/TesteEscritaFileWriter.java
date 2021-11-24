@@ -1,5 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class TesteEscritaFileWriter {
 
@@ -12,9 +13,9 @@ public class TesteEscritaFileWriter {
 //		
 //		BufferedWriter bw = new BufferedWriter(osw);
 		
-		FileWriter fw = new FileWriter("lorem1.txt");
+		FileWriter fw = new FileWriter("lorem1.txt", Charset.forName("UTF-8"));
 		
-		fw.write("Escrita utilizando JAVA.io");
+		fw.write("Escrita utilizando JÁVA.io");
 		
 		// PULAR LINHA
 		fw.write("\n");

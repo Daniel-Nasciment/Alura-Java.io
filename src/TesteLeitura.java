@@ -10,7 +10,7 @@ public class TesteLeitura {
 		// PADRÃO CHAMADO: DECORATOR
 
 		// TRANSFORMA O ARQUIVO EM BITS OU BYTES
-		FileInputStream fis = new FileInputStream("lorem.txt");
+		FileInputStream fis = new FileInputStream("lorem1.txt");
 
 		// TRANSFORMA BITS/BYTES EM CARACTERES
 		InputStreamReader isr = new InputStreamReader(fis);

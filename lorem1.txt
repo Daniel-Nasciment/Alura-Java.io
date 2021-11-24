@@ -1,4 +1,3 @@
-Escrita utilizando JAVA.io
+Escrita utilizando JÁVA.io
 
-Nova linha escrita
 Nova linha escrita
