@@ -1,5 +1,7 @@
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Base64;
 import java.util.Base64.Encoder;
@@ -13,16 +15,6 @@ public class TesteSalvamentoArquivos {
 		String caminhoFormatado = String.format("/00%s/%s/%s", sinistro.substring(1, 2), sinistro.substring(2, 5),
 				sinistro.substring(5, 8));
 
-		if (sinistro.length() == 9) {
-			caminhoFormatado = String.format("/0%s/%s/%s", sinistro.substring(1, 3), sinistro.substring(3, 6),
-					sinistro.substring(6, 9));
-		}
-
-		if (sinistro.length() == 10) {
-			caminhoFormatado = String.format("/%s/%s/%s", sinistro.substring(1, 4), sinistro.substring(4, 7),
-					sinistro.substring(7, 10));
-		}
-
 		System.out.println(caminhoFormatado);
 
 		String property = System.getProperty("save.arq");
@@ -32,11 +24,15 @@ public class TesteSalvamentoArquivos {
 
 		System.out.println(mkdirs);
 
-		File arquivo = new File("lorem.txt");
+		byte[] decode = Base64.getDecoder().decode("VGVzdGU=");
 
-		PrintWriter ps = new PrintWriter(pasta + "/" + arquivo);
-		ps.flush();
-		ps.close();
+		File arquivo = new File(pasta + "/nomeCriado.txt");
+
+		FileOutputStream os = new FileOutputStream(arquivo);
+
+		os.write(decode);
+		os.flush();
+		os.close();
 
 	}
 
