@@ -1,10 +1,8 @@
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.Base64;
-import java.util.Base64.Encoder;
+import java.util.Random;
 
 public class TesteSalvamentoArquivos {
 
@@ -12,10 +10,10 @@ public class TesteSalvamentoArquivos {
 
 		String sinistro = "T1602142";
 
+		String nomeArqEnviado = "nome";
+
 		String caminhoFormatado = String.format("/00%s/%s/%s", sinistro.substring(1, 2), sinistro.substring(2, 5),
 				sinistro.substring(5, 8));
-
-		System.out.println(caminhoFormatado);
 
 		String property = System.getProperty("save.arq");
 
@@ -26,13 +24,29 @@ public class TesteSalvamentoArquivos {
 
 		byte[] decode = Base64.getDecoder().decode("VGVzdGU=");
 
-		File arquivo = new File(pasta + "/nomeCriado.txt");
+		String chave = geraChave();
+
+		String nomeArquivoFormatado = "/".concat(chave).concat("_").concat(sinistro).concat("_")
+				.concat(nomeArqEnviado.substring(0, 3).concat("_").concat(".txt"));
+
+		File arquivo = new File(pasta + nomeArquivoFormatado);
 
 		FileOutputStream os = new FileOutputStream(arquivo);
 
 		os.write(decode);
 		os.flush();
 		os.close();
+
+	}
+
+	public static String geraChave() {
+		Random gerador = new Random();
+
+		double nextDouble = gerador.nextDouble();
+
+		String valueOf = String.valueOf(nextDouble);
+
+		return valueOf.substring(2, 12);
 
 	}
 
