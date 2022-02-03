@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Base64;
-import java.util.Random;
+import java.util.Date;
 
 public class TesteSalvamentoArquivos {
 
@@ -40,13 +40,12 @@ public class TesteSalvamentoArquivos {
 	}
 
 	public static String geraChave() {
-		Random gerador = new Random();
 
-		double nextDouble = gerador.nextDouble();
+		Long chave = new Date().getTime();
 
-		String valueOf = String.valueOf(nextDouble);
+		String chaveFormatada = String.valueOf(chave);
 
-		return valueOf.substring(2, 12);
+		return chaveFormatada.substring(chaveFormatada.length() - 10, chaveFormatada.length());
 
 	}
 
