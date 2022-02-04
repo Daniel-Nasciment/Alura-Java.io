@@ -8,9 +8,11 @@ public class TesteSalvamentoArquivos {
 
 	public static void main(String[] args) throws IOException {
 
+		String nomeArqEnviado = "nome";
+		
 		String sinistro = "T1602142";
 
-		String nomeArqEnviado = "nome";
+		
 
 		String caminhoFormatado = String.format("/00%s/%s/%s", sinistro.substring(1, 2), sinistro.substring(2, 5),
 				sinistro.substring(5, 8));
