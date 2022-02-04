@@ -18,9 +18,9 @@ public class TesteSalvamentoArquivos {
 		String property = System.getProperty("save.arq");
 
 		File pasta = new File(property.concat(caminhoFormatado));
-		boolean mkdirs = pasta.mkdirs();
+		boolean statusCriacao = pasta.mkdirs();
 
-		System.out.println(mkdirs);
+		System.out.println(statusCriacao);
 
 		byte[] decode = Base64.getDecoder().decode("VGVzdGU=");
 
