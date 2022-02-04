@@ -31,7 +31,11 @@ public class TesteSalvamentoArquivos {
 				.concat(nomeArqEnviado.substring(0, 3).concat("_").concat(".txt"));
 
 		File arquivo = new File(pasta + nomeArquivoFormatado);
+		
+		boolean name = arquivo.getName().endsWith(".txt");
 
+		System.out.println(name);
+		
 		FileOutputStream os = new FileOutputStream(arquivo);
 
 		os.write(decode);
