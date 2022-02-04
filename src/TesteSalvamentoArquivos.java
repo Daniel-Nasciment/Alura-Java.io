@@ -8,7 +8,7 @@ public class TesteSalvamentoArquivos {
 
 	public static void main(String[] args) throws IOException {
 
-		String sinistro = "T1602142";
+		String sinistro = "T1892142";
 
 		String nomeArqEnviado = "nome";
 
