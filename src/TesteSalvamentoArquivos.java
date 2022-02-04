@@ -10,9 +10,7 @@ public class TesteSalvamentoArquivos {
 
 		String nomeArqEnviado = "nome";
 		
-		String sinistro = "T1602142";
-
-		
+		String sinistro = "T1603142";
 
 		String caminhoFormatado = String.format("/00%s/%s/%s", sinistro.substring(1, 2), sinistro.substring(2, 5),
 				sinistro.substring(5, 8));
