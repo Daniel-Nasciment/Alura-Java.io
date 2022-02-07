@@ -2,15 +2,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.spi.FileTypeDetector;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TesteSalvamentoArquivos {
 
-	private static List<String> mimeType = new ArrayList<String>();
+	private static Set<String> mimeType = new HashSet<String>();
 
 	static {
 		mimeType.add("text/plain");
@@ -38,13 +37,17 @@ public class TesteSalvamentoArquivos {
 		String chave = geraChave();
 
 		String nomeArquivoFormatado = "/".concat(chave).concat("_").concat(sinistro).concat("_")
-				.concat(nomeArqEnviado.substring(0, 3).concat("_").concat(".png"));
+				.concat(nomeArqEnviado.substring(0, 3).concat("_").concat(".txt"));
 
 		File arquivo = new File(pasta + nomeArquivoFormatado);
 
 		boolean mimetypeAllowed = mimetypeAllowed(arquivo);
 
 		System.out.println(mimetypeAllowed);
+		
+		if (!mimetypeAllowed(arquivo)) {
+			throw new IllegalArgumentException("Tipo inválido");
+		}
 
 		FileOutputStream os = new FileOutputStream(arquivo);
 
@@ -64,7 +67,7 @@ public class TesteSalvamentoArquivos {
 
 	}
 
-	public static boolean mimetypeAllowed(File arquivo) throws IOException {
+	public static boolean mimetypeVerify(File arquivo) throws IOException {
 
 		// image/jpeg
 		// image/png
@@ -74,6 +77,7 @@ public class TesteSalvamentoArquivos {
 		// return Files.probeContentType(arquivo.toPath());
 
 		for (String string : mimeType) {
+			
 
 			if (Files.probeContentType(arquivo.toPath()).equals(string)) {
 				return true;
@@ -81,7 +85,7 @@ public class TesteSalvamentoArquivos {
 
 		}
 
-		throw new IllegalArgumentException("Tipo de arquivo inválido");
+		return false;
 
 	}
 
